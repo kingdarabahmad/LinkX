@@ -1,20 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NativeBaseProvider} from "native-base";
 
+import { LinearGradient } from 'expo-linear-gradient';
+
+import AppNavigator from './src/navigator/AppNavigator';
+
+const config = {
+  dependencies: {
+    'linear-gradient': LinearGradient
+  }
+};
 export default function App() {
+  const Tab = createBottomTabNavigator()
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider config={config}>
+      <AppNavigator/>
+    </NativeBaseProvider>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
